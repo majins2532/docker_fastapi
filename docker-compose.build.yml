@@ -1,0 +1,7 @@
+version: '3'
+services:
+  fastapi_std:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    image: fastapi_std/majin:${SERVER_VERSION}

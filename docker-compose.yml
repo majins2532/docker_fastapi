@@ -1,0 +1,13 @@
+version: '3'
+services:
+  fastapi:
+    image: fastapi_std/majin:${SERVER_VERSION}
+    ports:
+      - "8000:80"
+    environment:
+      - MODULE_NAME=main
+      - VARIABLE_NAME=value
+      - LOG_LEVEL=debug  # Set logging level to debug
+    volumes:
+      - ./app-dev/main.py:/app/main.py:ro ### Path source code Dev
+      #- ./app-production/main.py:/app/main.py:ro ### Path source code Production
