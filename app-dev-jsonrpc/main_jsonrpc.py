@@ -4,6 +4,7 @@ import random
 import urllib.request
 from pydantic import BaseModel
 
+odoo_token_api = "c6099dc770c53936edaafa65f720ebfd000fa2b6"
 HOST = 'odoo16.majin.xyz'
 PORT = 20001
 DB = 'odoo16_test'

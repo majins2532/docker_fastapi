@@ -9,5 +9,32 @@ services:
       - VARIABLE_NAME=value
       - LOG_LEVEL=debug  # Set logging level to debug
     volumes:
-      - ./app-dev/main.py:/app/main.py:ro ### Path source code Dev
+      #- ./app-production/main_xmlrpc.py:/app/main.py:ro ### Path source code Dev
+      #- ./app-production/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
+      - ./app-production/main.py:/app/main.py:ro ### Path source code Production
+
+  dev_xmlrpc_odoo:
+    image: fastapi_std/majin:${SERVER_VERSION}
+    ports:
+      - "8001:80"
+    environment:
+      - MODULE_NAME=main
+      - VARIABLE_NAME=value
+      - LOG_LEVEL=debug  # Set logging level to debug
+    volumes:
+      - ./app-dev-xmlrpc/main_xmlrpc.py:/app/main.py:ro ### Path source code Dev
+      - ./app-dev-xmlrpc/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
+      #- ./app-production/main.py:/app/main.py:ro ### Path source code Production
+    
+  dev_jsonrpc_odoo:
+    image: fastapi_std/majin:${SERVER_VERSION}
+    ports:
+      - "8002:80"
+    environment:
+      - MODULE_NAME=main
+      - VARIABLE_NAME=value
+      - LOG_LEVEL=debug  # Set logging level to debug
+    volumes:
+      - ./app-dev-jsonrpc/main_jsonrpc.py:/app/main.py:ro ### Path source code Dev
+      #- ./app-dev-jsonrpc/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
       #- ./app-production/main.py:/app/main.py:ro ### Path source code Production

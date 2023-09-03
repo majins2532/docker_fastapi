@@ -5,3 +5,8 @@ services:
         context: .
         dockerfile: ./Dockerfile
     image: fastapi_std/majin:${SERVER_VERSION}
+  dev:
+    build:
+        context: .
+        dockerfile: ./Dockerfile_NOT_CMD
+    image: fastapi_std/majin:dev
