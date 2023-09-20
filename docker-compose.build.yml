@@ -4,9 +4,9 @@ services:
     build:
         context: .
         dockerfile: ./Dockerfile
-    image: fastapi_std/majin:${SERVER_VERSION}
+    image: fastapi/mp:${LIVE_VERSION}
   dev:
     build:
         context: .
-        dockerfile: ./Dockerfile_NOT_CMD
-    image: fastapi_std/majin:dev
+        dockerfile: ./Dockerfile
+    image: fastapi/mp:${DEV_VERSION}

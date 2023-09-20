@@ -1,4 +1,6 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pyjwt
 erppeek
+requests
+PyYAML>=6.0

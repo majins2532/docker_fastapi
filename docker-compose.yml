@@ -1,40 +1,20 @@
 version: '3'
 services:
   fastapi:
-    image: fastapi_std/majin:${SERVER_VERSION}
+    image: fastapi/mp:${DEV_VERSION}
     ports:
-      - "8000:80"
+      - "9899:8000"
     environment:
       - MODULE_NAME=main
       - VARIABLE_NAME=value
       - LOG_LEVEL=debug  # Set logging level to debug
     volumes:
-      #- ./app-production/main_xmlrpc.py:/app/main.py:ro ### Path source code Dev
-      #- ./app-production/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
-      - ./app-production/main.py:/app/main.py:ro ### Path source code Production
+      - ./app-api-odoo-mp:/app:ro ### Path source code Dev
+      - logs:/var/log/fastapi
+    networks:
+      - internal
 
-  dev_xmlrpc_odoo:
-    image: fastapi_std/majin:${SERVER_VERSION}
-    ports:
-      - "8001:80"
-    environment:
-      - MODULE_NAME=main
-      - VARIABLE_NAME=value
-      - LOG_LEVEL=debug  # Set logging level to debug
-    volumes:
-      - ./app-dev-xmlrpc/main_xmlrpc.py:/app/main.py:ro ### Path source code Dev
-      - ./app-dev-xmlrpc/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
-      #- ./app-production/main.py:/app/main.py:ro ### Path source code Production
-    
-  dev_jsonrpc_odoo:
-    image: fastapi_std/majin:${SERVER_VERSION}
-    ports:
-      - "8002:80"
-    environment:
-      - MODULE_NAME=main
-      - VARIABLE_NAME=value
-      - LOG_LEVEL=debug  # Set logging level to debug
-    volumes:
-      - ./app-dev-jsonrpc/main_jsonrpc.py:/app/main.py:ro ### Path source code Dev
-      #- ./app-dev-jsonrpc/base_xmlrpc.py:/app/base_xmlrpc.py:ro ### Path source code Dev
-      #- ./app-production/main.py:/app/main.py:ro ### Path source code Production
+volumes:
+  logs:
+networks:
+  internal:
