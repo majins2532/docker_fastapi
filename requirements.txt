@@ -4,3 +4,7 @@ pyjwt
 erppeek
 requests
 PyYAML>=6.0
+line-bot-sdk
+passlib
+gspread
+oauth2client

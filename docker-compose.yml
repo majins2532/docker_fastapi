@@ -3,13 +3,13 @@ services:
   fastapi:
     image: fastapi/mp:${DEV_VERSION}
     ports:
-      - "9899:8000"
+      - "3200:8000"
     environment:
       - MODULE_NAME=main
       - VARIABLE_NAME=value
-      - LOG_LEVEL=debug  # Set logging level to debug
+      - LOG_LEVEL=debug # Set logging level to debug
     volumes:
-      - ./app-api-odoo-mp:/app:ro ### Path source code Dev
+      - ./line-google-sheet:/app:ro ### Path source code Dev
       - logs:/var/log/fastapi
     networks:
       - internal
